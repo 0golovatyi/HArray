@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 
 project(HArray LANGUAGES CXX)
 
+# tell compiler to use C++14 features (needed for std::unique_ptr and
+# some templates syntax)
+set(CMAKE_CXX_STANDARD 14)
+
 # create static library
 add_library(harray STATIC
   src/HArray_delValueByKey.cpp
@@ -13,7 +17,8 @@ add_library(harray STATIC
   src/HArray_rebuild.cpp
   src/HArray_scanKeysAndValues.cpp
   src/HArray_shrink.cpp
-  src/HArray_test.cpp)
+  src/HArray_test.cpp
+  src/HArrayGeneric.cpp)
 
 # prepare for publishin the library
 add_library(HArray::harray ALIAS harray)
